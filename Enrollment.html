@@ -27,7 +27,7 @@
     }
 
     .form-container {
-      max-width: 900px;
+      max-width: 700px;
       margin: 40px auto;
       background: white;
       padding: 30px;
@@ -52,48 +52,25 @@
       margin-bottom: 5px;
     }
 
-    input, select {
+    input, select, textarea {
       width: 100%;
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
       font-size: 16px;
-      box-sizing: border-box;
     }
 
     .name-fields, .subgroup {
       display: flex;
       gap: 10px;
-      flex-wrap: wrap;
     }
 
     .name-fields input, .subgroup input {
       flex: 1;
-      min-width: 150px;
     }
 
-    /* Side-by-side parent boxes */
-    .parent-guardian-container {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .parent-box {
-      flex: 1;
-      min-width: 250px;
-      border: 1px solid #ccc;
-      padding: 15px;
-      border-radius: 8px;
-      background: #fafafa;
-    }
-
-    .parent-box h3 {
-      margin-top: 0;
-      color: maroon;
-      font-size: 18px;
-      text-align: center;
-      margin-bottom: 15px;
+    textarea {
+      resize: vertical;
     }
 
     button {
@@ -117,6 +94,13 @@
       font-size: 14px;
       color: #666;
     }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .name-fields, .subgroup {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 
@@ -128,13 +112,14 @@
 
 <div class="form-container">
   <h2>Enrollment Form</h2>
-
-  <!-- Netlify Form -->
-  <form name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="enrollment">
-    <p style="display:none">
-      <label>Don’t fill this out: <input name="bot-field"></label>
-    </p>
+  <form action="https://formsubmit.co/yourgmail@gmail.com" method="POST">
+    
+    <!-- FormSubmit settings -->
+    <input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="New Enrollment Submission">
+    <input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
 
     <!-- Full Name -->
     <div class="form-group">
@@ -165,11 +150,7 @@
           <option value="Grade 10">Grade 10</option>
         </optgroup>
         <optgroup label="Senior High School (Strand)">
-          <option value="Grade 11 - STEM">Grade 11 - STEM</option>
-          <option value="Grade 11 - HUMSS">Grade 11 - HUMSS</option>
-          <option value="Grade 11 - ABM">Grade 11 - ABM</option>
-          <option value="Grade 11 - GAS">Grade 11 - GAS</option>
-          <option value="Grade 11 - TVL-CSS">Grade 11 - TVL (CSS)</option>
+          <option value="Grade 11">Grade 11</option>
           <option value="Grade 12 - STEM">Grade 12 - STEM</option>
           <option value="Grade 12 - HUMSS">Grade 12 - HUMSS</option>
           <option value="Grade 12 - ABM">Grade 12 - ABM</option>
@@ -195,43 +176,39 @@
       </select>
     </div>
 
-    <!-- Home Address -->
+    <!-- Address -->
     <div class="form-group">
       <label for="address">Home Address:</label>
       <input type="text" id="address" name="address" required>
     </div>
 
-    <!-- Parents & Guardian Side-by-Side -->
-    <div class="parent-guardian-container">
-      <!-- Father -->
-      <div class="parent-box">
-        <h3>Father</h3>
-        <input type="text" name="fatherName" placeholder="Name" required>
-        <input type="text" name="fatherOccupation" placeholder="Occupation" required>
-        <input type="text" name="fatherAddress" placeholder="Address" required>
-        <input type="text" name="fatherContact" placeholder="Contact Number" required>
-      </div>
-
-      <!-- Mother -->
-      <div class="parent-box">
-        <h3>Mother</h3>
-        <input type="text" name="motherName" placeholder="Name" required>
-        <input type="text" name="motherOccupation" placeholder="Occupation" required>
-        <input type="text" name="motherAddress" placeholder="Address" required>
-        <input type="text" name="motherContact" placeholder="Contact Number" required>
-      </div>
-
-      <!-- Guardian -->
-      <div class="parent-box">
-        <h3>Guardian</h3>
-        <input type="text" name="guardianName" placeholder="Name" required>
-        <input type="text" name="guardianOccupation" placeholder="Occupation" required>
-        <input type="text" name="guardianAddress" placeholder="Address" required>
-        <input type="text" name="guardianContact" placeholder="Contact Number" required>
-      </div>
+    <!-- Father Information -->
+    <div class="form-group">
+      <label>Father Information:</label>
+      <input type="text" name="fatherName" placeholder="Name" required>
+      <input type="text" name="fatherOccupation" placeholder="Occupation" required>
+      <input type="text" name="fatherAddress" placeholder="Address" required>
+      <input type="tel" name="fatherContact" placeholder="Contact Number" pattern="[0-9]{10}" required>
     </div>
 
-    <br>
+    <!-- Mother Information -->
+    <div class="form-group">
+      <label>Mother Information:</label>
+      <input type="text" name="motherName" placeholder="Name" required>
+      <input type="text" name="motherOccupation" placeholder="Occupation" required>
+      <input type="text" name="motherAddress" placeholder="Address" required>
+      <input type="tel" name="motherContact" placeholder="Contact Number" pattern="[0-9]{10}" required>
+    </div>
+
+    <!-- Guardian Information -->
+    <div class="form-group">
+      <label>Guardian Information:</label>
+      <input type="text" name="guardianName" placeholder="Name" required>
+      <input type="text" name="guardianOccupation" placeholder="Occupation" required>
+      <input type="text" name="guardianAddress" placeholder="Address" required>
+      <input type="tel" name="guardianContact" placeholder="Contact Number" pattern="[0-9]{10}" required>
+    </div>
+
     <button type="submit">Submit Enrollment</button>
   </form>
 </div>
