@@ -27,7 +27,7 @@
     }
 
     .form-container {
-      max-width: 700px;
+      max-width: 900px;
       margin: 40px auto;
       background: white;
       padding: 30px;
@@ -52,25 +52,48 @@
       margin-bottom: 5px;
     }
 
-    input, select, textarea {
+    input, select {
       width: 100%;
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
       font-size: 16px;
+      box-sizing: border-box;
     }
 
-    .name-fields {
+    .name-fields, .subgroup {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .name-fields input {
+    .name-fields input, .subgroup input {
       flex: 1;
+      min-width: 150px;
     }
 
-    textarea {
-      resize: vertical;
+    /* Side-by-side parent boxes */
+    .parent-guardian-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .parent-box {
+      flex: 1;
+      min-width: 250px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .parent-box h3 {
+      margin-top: 0;
+      color: maroon;
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 15px;
     }
 
     button {
@@ -94,15 +117,6 @@
       font-size: 14px;
       color: #666;
     }
-
-    .subgroup {
-      display: flex;
-      gap: 10px;
-    }
-
-    .subgroup input {
-      flex: 1;
-    }
   </style>
 </head>
 
@@ -114,13 +128,13 @@
 
 <div class="form-container">
   <h2>Enrollment Form</h2>
-  <form action="https://formsubmit.co/yourgmail@gmail.com" method="POST">
-    
-    <!-- FormSubmit settings -->
-    <input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_subject" value="New Enrollment Submission">
+
+  <!-- Netlify Form -->
+  <form name="enrollment" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="enrollment">
+    <p style="display:none">
+      <label>Don’t fill this out: <input name="bot-field"></label>
+    </p>
 
     <!-- Full Name -->
     <div class="form-group">
@@ -181,62 +195,43 @@
       </select>
     </div>
 
-    <!-- Address -->
+    <!-- Home Address -->
     <div class="form-group">
       <label for="address">Home Address:</label>
       <input type="text" id="address" name="address" required>
     </div>
 
-    <!-- Parents -->
-    <div class="form-group">
-       <label> Father Information:</label>
-      <div class="form-group">
+    <!-- Parents & Guardian Side-by-Side -->
+    <div class="parent-guardian-container">
+      <!-- Father -->
+      <div class="parent-box">
+        <h3>Father</h3>
         <input type="text" name="fatherName" placeholder="Name" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="fatherOccupation" placeholder="Occupation" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="fatherAddress" placeholder="Address" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="fatherContact" placeholder="Contact Number" required>
       </div>
-    </div>
 
-    <div class="form-group">
-        <label> Mother Information:</label>
-      <div class="form-group">
+      <!-- Mother -->
+      <div class="parent-box">
+        <h3>Mother</h3>
         <input type="text" name="motherName" placeholder="Name" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="motherOccupation" placeholder="Occupation" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="motherAddress" placeholder="Address" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="motherContact" placeholder="Contact Number" required>
-    
-    </div>
+      </div>
 
-    <!-- Guardian -->
-    <div class="form-group">
-      <label>Guardian Information:</label>
-      <div class="form-group">
+      <!-- Guardian -->
+      <div class="parent-box">
+        <h3>Guardian</h3>
         <input type="text" name="guardianName" placeholder="Name" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="guardianOccupation" placeholder="Occupation" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="guardianAddress" placeholder="Address" required>
-      </div>
-      <div class="form-group">
         <input type="text" name="guardianContact" placeholder="Contact Number" required>
       </div>
     </div>
 
+    <br>
     <button type="submit">Submit Enrollment</button>
   </form>
 </div>
@@ -247,7 +242,6 @@
 
 </body>
 </html>
-
 
 
 
