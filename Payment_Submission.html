@@ -6,12 +6,29 @@
 <title>Enrollment - Step 3 | Dominican School of Pilar, Inc.</title>
 
 <style>
-body {font-family: Arial; background:#fdf8f6; color:maroon; margin:0; padding:20px;}
-header {background:maroon; color:white; padding:20px; text-align:center;}
-header h1 {margin:0; font-family:'Times New Roman', serif; font-size:28px;}
 
-.form-container {
-max-width:700px;
+body{
+font-family: Arial, sans-serif;
+background:#fdf8f6;
+color:maroon;
+margin:0;
+}
+
+header{
+background:maroon;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-family:'Times New Roman', serif;
+font-size:28px;
+}
+
+.form-container{
+max-width:800px;
 margin:40px auto;
 background:white;
 padding:30px;
@@ -20,15 +37,32 @@ border:2px solid maroon;
 box-shadow:0 0 15px rgba(0,0,0,0.1);
 }
 
-h2 {text-align:center; margin-bottom:25px;}
+h2{
+text-align:center;
+margin-bottom:25px;
+}
 
-.payment-box {
+.payment-box{
 background:#fff5f5;
 border:2px dashed maroon;
 padding:20px;
-margin-bottom:20px;
+margin-bottom:25px;
 text-align:center;
+font-size:16px;
 }
+
+iframe{
+width:100%;
+height:1100px;
+border:none;
+}
+
+@media (max-width:600px){
+iframe{
+height:1400px;
+}
+}
+
 </style>
 </head>
 
@@ -44,16 +78,12 @@ text-align:center;
 
 <div class="payment-box">
 <p>Please send your enrollment payment via <strong>GCash</strong>.</p>
-<p>GCash Number: <strong>09912614548</strong></p>
-<p>After payment, fill out the form below and upload your receipt.</p>
+<p><strong>GCash Number:</strong> 0991-261-4548</p>
+<p>After sending the payment, kindly fill out the form below and upload your receipt.</p>
 </div>
 
-<!-- GOOGLE FORM EMBED -->
-<iframe 
-src="https://docs.google.com/forms/d/e/1FAIpQLSc6fVPDL3l8ALwT8_WK-gWTu7MP_4JLtxnbrGLmvddbHGouHw/viewform?embedded=true"
-width="100%" 
-height="1100" 
-frameborder="0">
+<iframe
+src="https://docs.google.com/forms/d/e/1FAIpQLSc6fVPDL3l8ALwT8_WK-gWTu7MP_4JLtxnbrGLmvddbHGouHw/viewform?embedded=true">
 Loading…
 </iframe>
 
