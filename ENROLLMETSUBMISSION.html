@@ -10,9 +10,10 @@ header {background:maroon; color:white; padding:20px; text-align:center;}
 header h1 {margin:0; font-family:'Times New Roman', serif; font-size:28px;}
 .form-container {max-width:700px; margin:40px auto; background:white; padding:30px; border-radius:10px; border:2px solid maroon; box-shadow:0 0 15px rgba(0,0,0,0.1);}
 h2 {text-align:center; margin-bottom:25px;}
-input, select {width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; font-size:16px; margin-bottom:15px;}
+input {width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; font-size:16px; margin-bottom:15px;}
 button {background:maroon; color:white; padding:12px; width:100%; border:none; border-radius:5px; cursor:pointer; font-size:16px;}
 button:hover {background:#a00000;}
+h3 {margin-top:25px; margin-bottom:10px;}
 </style>
 </head>
 <body>
@@ -22,37 +23,31 @@ button:hover {background:#a00000;}
 </header>
 
 <div class="form-container">
-<h2>Step 2: Parents & Payment Information</h2>
+<h2>Step 2: Parent / Guardian Information</h2>
 
-<form action="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ACTION_URL/formResponse" method="POST" target="_blank">
+<form action="enrollment_step3.html" method="GET">
   <!-- Father Info -->
   <h3>Father Information</h3>
-  <input type="text" name="entry.FATHER_NAME" placeholder="Name" required>
-  <input type="text" name="entry.FATHER_OCCUPATION" placeholder="Occupation" required>
-  <input type="text" name="entry.FATHER_ADDRESS" placeholder="Address" required>
-  <input type="tel" name="entry.FATHER_CONTACT" placeholder="Contact Number" required>
+  <input type="text" name="fatherName" placeholder="Name" required>
+  <input type="text" name="fatherOccupation" placeholder="Occupation" required>
+  <input type="text" name="fatherAddress" placeholder="Address" required>
+  <input type="tel" name="fatherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
 
   <!-- Mother Info -->
   <h3>Mother Information</h3>
-  <input type="text" name="entry.MOTHER_NAME" placeholder="Name" required>
-  <input type="text" name="entry.MOTHER_OCCUPATION" placeholder="Occupation" required>
-  <input type="text" name="entry.MOTHER_ADDRESS" placeholder="Address" required>
-  <input type="tel" name="entry.MOTHER_CONTACT" placeholder="Contact Number" required>
+  <input type="text" name="motherName" placeholder="Name" required>
+  <input type="text" name="motherOccupation" placeholder="Occupation" required>
+  <input type="text" name="motherAddress" placeholder="Address" required>
+  <input type="tel" name="motherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
 
   <!-- Guardian Info -->
   <h3>Guardian Information</h3>
-  <input type="text" name="entry.GUARDIAN_NAME" placeholder="Name" required>
-  <input type="text" name="entry.GUARDIAN_OCCUPATION" placeholder="Occupation" required>
-  <input type="text" name="entry.GUARDIAN_ADDRESS" placeholder="Address" required>
-  <input type="tel" name="entry.GUARDIAN_CONTACT" placeholder="Contact Number" required>
+  <input type="text" name="guardianName" placeholder="Name" required>
+  <input type="text" name="guardianOccupation" placeholder="Occupation" required>
+  <input type="text" name="guardianAddress" placeholder="Address" required>
+  <input type="tel" name="guardianContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
 
-  <!-- Payment Info -->
-  <h3>Payment Information</h3>
-  <p>Please send payment via GCash to <strong>09912614548</strong> and enter your reference below:</p>
-  <input type="text" name="entry.PAYMENT_AMOUNT" placeholder="Amount Paid (₱)" required>
-  <input type="text" name="entry.PAYMENT_REF" placeholder="GCash Transaction Reference" required>
-
-  <button type="submit">Submit Enrollment</button>
+  <button type="submit">Next: Payment & Submission</button>
 </form>
 </div>
 </body>
