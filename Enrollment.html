@@ -1,83 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enrollment - Dominican School of Pilar, Inc.</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #fdf8f6;
-  color: maroon;
-  margin: 0;
-  padding: 20px;
-}
-header {
-  background: maroon;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-header h1 {
-  margin: 0;
-  font-family: 'Times New Roman', serif;
-  font-size: 28px;
-}
-.form-container {
-  max-width: 700px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  border: 2px solid maroon;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-h2 {
-  text-align: center;
-  margin-bottom: 25px;
-}
-input, select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-button {
-  background: maroon;
-  color: white;
-  padding: 12px;
-  width: 100%;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-button:hover {
-  background: #a00000;
-}
-.name-fields {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-.name-fields input {
-  flex: 1;
-}
-h3 {
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
-.payment-box {
-  background: #fff5f5;
-  border: 2px dashed maroon;
-  padding: 20px;
-  margin-bottom: 15px;
-  text-align: center;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enrollment - Dominican School of Pilar, Inc.</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf8f6;
+      color: maroon;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background-color: maroon;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      font-size: 28px;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      border: 2px solid maroon;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: maroon;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .name-fields, .subgroup {
+      display: flex;
+      gap: 10px;
+    }
+
+    .name-fields input, .subgroup input {
+      flex: 1;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: maroon;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #a00000;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .name-fields, .subgroup {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
@@ -85,93 +111,110 @@ h3 {
 </header>
 
 <div class="form-container">
-<h2>Online Enrollment Form</h2>
+  <h2>Enrollment Form</h2>
+  <form action="https://formsubmit.co/ariennelosabio@dsp.ph.education" method="POST">
+    
+    <!-- FormSubmit settings -->
+    <input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="New Enrollment Submission">
+    <input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
 
-<form action="https://formsubmit.co/ariennelosabio@dsp.ph.education" method="POST" enctype="multipart/form-data">
-  <!-- FormSubmit settings -->
-  <input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_subject" value="New Enrollment Submission">
-  <input type="text" name="_honey" style="display:none">
+    <!-- Full Name -->
+    <div class="form-group">
+      <label>Full Name:</label>
+      <div class="name-fields">
+        <input type="text" name="lastName" placeholder="Last Name" required>
+        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="middleName" placeholder="Middle Name" required>
+        <input type="text" name="nameExtension" placeholder="Extension (Optional)">
+      </div>
+    </div>
 
-  <!-- STUDENT INFO -->
-  <h3>Student Information</h3>
-  <label>Full Name:</label>
-  <div class="name-fields">
-    <input type="text" name="lastName" placeholder="Last Name" required>
-    <input type="text" name="firstName" placeholder="First Name" required>
-    <input type="text" name="middleName" placeholder="Middle Name" required>
-    <input type="text" name="nameExtension" placeholder="Extension (Optional)">
-  </div>
+    <!-- LRN -->
+    <div class="form-group">
+      <label for="lrn">Learner Reference Number (LRN):</label>
+      <input type="text" id="lrn" name="lrn" required>
+    </div>
 
-  <label>LRN:</label>
-  <input type="text" name="lrn" required>
+    <!-- Grade Level -->
+    <div class="form-group">
+      <label for="grade">Grade Level:</label>
+      <select id="grade" name="grade" required>
+        <option value="">--Select Grade Level--</option>
+        <optgroup label="Junior High School">
+          <option value="Grade 7">Grade 7</option>
+          <option value="Grade 8">Grade 8</option>
+          <option value="Grade 9">Grade 9</option>
+          <option value="Grade 10">Grade 10</option>
+        </optgroup>
+        <optgroup label="Senior High School (Strand)">
+          <option value="Grade 11">Grade 11</option>
+          <option value="Grade 12 - STEM">Grade 12 - STEM</option>
+          <option value="Grade 12 - HUMSS">Grade 12 - HUMSS</option>
+          <option value="Grade 12 - ABM">Grade 12 - ABM</option>
+          <option value="Grade 12 - GAS">Grade 12 - GAS</option>
+          <option value="Grade 12 - TVL-CSS">Grade 12 - TVL (CSS)</option>
+        </optgroup>
+      </select>
+    </div>
 
-  <label>Grade Level:</label>
-  <select name="grade" required>
-    <option value="">Select Grade</option>
-    <option>Grade 7</option>
-    <option>Grade 8</option>
-    <option>Grade 9</option>
-    <option>Grade 10</option>
-    <option>Grade 11</option>
-    <option>Grade 12 - STEM</option>
-    <option>Grade 12 - HUMSS</option>
-    <option>Grade 12 - ABM</option>
-    <option>Grade 12 - GAS</option>
-    <option>Grade 12 - TVL (CSS)</option>
-  </select>
+    <!-- Date of Birth -->
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+    </div>
 
-  <label>Date of Birth:</label>
-  <input type="date" name="dob" required>
+    <!-- Gender -->
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">--Select Gender--</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+      </select>
+    </div>
 
-  <label>Gender:</label>
-  <select name="gender" required>
-    <option value="">Select Gender</option>
-    <option>Female</option>
-    <option>Male</option>
-  </select>
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Home Address:</label>
+      <input type="text" id="address" name="address" required>
+    </div>
 
-  <label>Home Address:</label>
-  <input type="text" name="address" required>
+    <!-- Father Information -->
+    <div class="form-group">
+      <label>Father Information:</label>
+      <input type="text" name="fatherName" placeholder="Name" required>
+      <input type="text" name="fatherOccupation" placeholder="Occupation" required>
+      <input type="text" name="fatherAddress" placeholder="Address" required>
+      <input type="tel" name="fatherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+    </div>
 
-  <!-- PARENT/GUARDIAN INFO -->
-  <h3>Father Information</h3>
-  <input type="text" name="fatherName" placeholder="Name" required>
-  <input type="text" name="fatherOccupation" placeholder="Occupation" required>
-  <input type="text" name="fatherAddress" placeholder="Address" required>
-  <input type="tel" name="fatherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+    <!-- Mother Information -->
+    <div class="form-group">
+      <label>Mother Information:</label>
+      <input type="text" name="motherName" placeholder="Name" required>
+      <input type="text" name="motherOccupation" placeholder="Occupation" required>
+      <input type="text" name="motherAddress" placeholder="Address" required>
+      <input type="tel" name="motherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+    </div>
 
-  <h3>Mother Information</h3>
-  <input type="text" name="motherName" placeholder="Name" required>
-  <input type="text" name="motherOccupation" placeholder="Occupation" required>
-  <input type="text" name="motherAddress" placeholder="Address" required>
-  <input type="tel" name="motherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+    <!-- Guardian Information -->
+    <div class="form-group">
+      <label>Guardian Information:</label>
+      <input type="text" name="guardianName" placeholder="Name" required>
+      <input type="text" name="guardianOccupation" placeholder="Occupation" required>
+      <input type="text" name="guardianAddress" placeholder="Address" required>
+      <input type="tel" name="guardianContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+    </div>
 
-  <h3>Guardian Information</h3>
-  <input type="text" name="guardianName" placeholder="Name" required>
-  <input type="text" name="guardianOccupation" placeholder="Occupation" required>
-  <input type="text" name="guardianAddress" placeholder="Address" required>
-  <input type="tel" name="guardianContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
-
-  <!-- PAYMENT -->
-  <h3>Payment Information</h3>
-  <div class="payment-box">
-    <p>Send enrollment payment via GCash to <strong>09912614548</strong> and upload the screenshot below.</p>
-  </div>
-  <label>Amount Paid (₱):</label>
-  <input type="text" name="amount" placeholder="Enter amount paid" required>
-
-  <label>Upload GCash Receipt Screenshot:</label>
-  <input type="file" name="receipt" accept="image/*" required>
-
-  <button type="submit">Submit Enrollment</button>
-</form>
+    <button type="submit">Submit Enrollment</button>
+  </form>
 </div>
 
-<footer style="text-align:center; margin-top:40px; font-size:14px; color:#666;">
-&copy; 2025 Dominican School of Pilar, Inc. All rights reserved.
+<footer>
+  &copy; 2025 Dominican School of Pilar, Inc. All rights reserved.
 </footer>
 
 </body>
