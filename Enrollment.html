@@ -1,225 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Enrollment - Dominican School of Pilar, Inc.</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fdf8f6;
-      color: maroon;
-      margin: 0;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enrollment - Dominican School of Pilar, Inc.</title>
 
-    header {
-      background-color: maroon;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-family: 'Times New Roman', serif;
-      font-size: 28px;
-    }
-
-    .form-container {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      border: 2px solid maroon;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: maroon;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-
-    .name-fields, .subgroup {
-      display: flex;
-      gap: 10px;
-    }
-
-    .name-fields input, .subgroup input {
-      flex: 1;
-    }
-
-    textarea {
-      resize: vertical;
-    }
-
-    button {
-      background-color: maroon;
-      color: white;
-      padding: 12px;
-      width: 100%;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #a00000;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 14px;
-      color: #666;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      .name-fields, .subgroup {
-        flex-direction: column;
-      }
-    }
-  </style>
+<style>
+body{font-family:Arial;background:#fdf8f6;margin:0;padding:20px;color:maroon;}
+header{background:maroon;color:white;padding:20px;text-align:center;}
+.form-container{max-width:750px;margin:auto;background:white;padding:30px;border-radius:10px;border:2px solid maroon;box-shadow:0 0 15px rgba(0,0,0,0.1);}
+h2{text-align:center;}
+input,select{width:100%;padding:10px;margin-top:5px;margin-bottom:15px;border-radius:5px;border:1px solid #ccc;}
+button{background:maroon;color:white;border:none;padding:12px;border-radius:5px;cursor:pointer;width:100%;}
+button:hover{background:#a00000;}
+.step{display:none;}
+.step.active{display:block;}
+.progress{display:flex;justify-content:space-between;margin-bottom:20px;font-weight:bold;}
+.progress div{color:#bbb;flex:1;text-align:center;position:relative;}
+.progress div.active{color:maroon;}
+.progress div::after{content:'';position:absolute;top:50%;right:-50%;height:3px;background:#bbb;width:100%;z-index:-1;}
+.progress div:last-child::after{display:none;}
+.progress div.active::after{background:maroon;}
+.payment-box{background:#fff5f5;border:2px dashed maroon;padding:20px;text-align:center;margin-bottom:20px;}
+</style>
 </head>
-
 <body>
 
 <header>
-  <h1>Dominican School of Pilar, Inc.</h1>
+<h1>Dominican School of Pilar, Inc.</h1>
 </header>
 
 <div class="form-container">
-  <h2>Enrollment Form</h2>
-  <form action="https://formsubmit.co/ariennelosabio@dsp.ph.education" method="POST">
-    
-    <!-- FormSubmit settings -->
-    <input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_subject" value="New Enrollment Submission">
-    <input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
+<h2>Online Enrollment</h2>
 
-    <!-- Full Name -->
-    <div class="form-group">
-      <label>Full Name:</label>
-      <div class="name-fields">
-        <input type="text" name="lastName" placeholder="Last Name" required>
-        <input type="text" name="firstName" placeholder="First Name" required>
-        <input type="text" name="middleName" placeholder="Middle Name" required>
-        <input type="text" name="nameExtension" placeholder="Extension (Optional)">
-      </div>
-    </div>
-
-    <!-- LRN -->
-    <div class="form-group">
-      <label for="lrn">Learner Reference Number (LRN):</label>
-      <input type="text" id="lrn" name="lrn" required>
-    </div>
-
-    <!-- Grade Level -->
-    <div class="form-group">
-      <label for="grade">Grade Level:</label>
-      <select id="grade" name="grade" required>
-        <option value="">--Select Grade Level--</option>
-        <optgroup label="Junior High School">
-          <option value="Grade 7">Grade 7</option>
-          <option value="Grade 8">Grade 8</option>
-          <option value="Grade 9">Grade 9</option>
-          <option value="Grade 10">Grade 10</option>
-        </optgroup>
-        <optgroup label="Senior High School (Strand)">
-          <option value="Grade 11">Grade 11</option>
-          <option value="Grade 12 - STEM">Grade 12 - STEM</option>
-          <option value="Grade 12 - HUMSS">Grade 12 - HUMSS</option>
-          <option value="Grade 12 - ABM">Grade 12 - ABM</option>
-          <option value="Grade 12 - GAS">Grade 12 - GAS</option>
-          <option value="Grade 12 - TVL-CSS">Grade 12 - TVL (CSS)</option>
-        </optgroup>
-      </select>
-    </div>
-
-    <!-- Date of Birth -->
-    <div class="form-group">
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required>
-    </div>
-
-    <!-- Gender -->
-    <div class="form-group">
-      <label for="gender">Gender:</label>
-      <select id="gender" name="gender" required>
-        <option value="">--Select Gender--</option>
-        <option value="Female">Female</option>
-        <option value="Male">Male</option>
-      </select>
-    </div>
-
-    <!-- Address -->
-    <div class="form-group">
-      <label for="address">Home Address:</label>
-      <input type="text" id="address" name="address" required>
-    </div>
-
-    <!-- Father Information -->
-    <div class="form-group">
-      <label>Father Information:</label>
-      <input type="text" name="fatherName" placeholder="Name" required>
-      <input type="text" name="fatherOccupation" placeholder="Occupation" required>
-      <input type="text" name="fatherAddress" placeholder="Address" required>
-      <input type="tel" name="fatherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
-    </div>
-
-    <!-- Mother Information -->
-    <div class="form-group">
-      <label>Mother Information:</label>
-      <input type="text" name="motherName" placeholder="Name" required>
-      <input type="text" name="motherOccupation" placeholder="Occupation" required>
-      <input type="text" name="motherAddress" placeholder="Address" required>
-      <input type="tel" name="motherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
-    </div>
-
-    <!-- Guardian Information -->
-    <div class="form-group">
-      <label>Guardian Information:</label>
-      <input type="text" name="guardianName" placeholder="Name" required>
-      <input type="text" name="guardianOccupation" placeholder="Occupation" required>
-      <input type="text" name="guardianAddress" placeholder="Address" required>
-      <input type="tel" name="guardianContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
-    </div>
-
-    <button type="submit">Submit Enrollment</button>
-  </form>
+<div class="progress">
+<div class="active">1. Student Info</div>
+<div>2. Parent Info</div>
+<div>3. Payment</div>
+<div>4. Upload Receipt</div>
 </div>
 
-<footer>
-  &copy; 2025 Dominican School of Pilar, Inc. All rights reserved.
-</footer>
+<form action="https://formsubmit.co/ariennelosabio@dsp.ph.education"
+      method="POST"
+      enctype="multipart/form-data">
+
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
+<input type="hidden" name="_subject" value="New Enrollment Submission">
+<input type="text" name="_honey" style="display:none"> <!-- Anti-spam -->
+
+<!-- STEP 1 STUDENT INFO -->
+<div class="step active">
+<label>Full Name</label>
+<input type="text" name="fullname" placeholder="Juan Dela Cruz" required>
+
+<label>LRN</label>
+<input type="text" name="lrn" placeholder="123456789012" required>
+
+<label>Grade Level</label>
+<select name="grade" required>
+<option value="">Select Grade</option>
+<option>Grade 7</option>
+<option>Grade 8</option>
+<option>Grade 9</option>
+<option>Grade 10</option>
+<option>Grade 11</option>
+<option>Grade 12</option>
+</select>
+
+<label>Date of Birth</label>
+<input type="date" name="dob" required>
+
+<label>Gender</label>
+<select name="gender" required>
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<label>Home Address</label>
+<input type="text" name="address" placeholder="123 Sample St., Pilar" required>
+
+<button type="button" onclick="next(1)">Next</button>
+</div>
+
+<!-- STEP 2 PARENT INFO -->
+<div class="step">
+<h3>Father Information</h3>
+<input type="text" name="fatherName" placeholder="Father Name" required>
+<input type="text" name="fatherOccupation" placeholder="Occupation" required>
+<input type="text" name="fatherAddress" placeholder="Address" required>
+<input type="tel" name="fatherContact" placeholder="Contact Number" required>
+
+<h3>Mother Information</h3>
+<input type="text" name="motherName" placeholder="Mother Name" required>
+<input type="text" name="motherOccupation" placeholder="Occupation" required>
+<input type="text" name="motherAddress" placeholder="Address" required>
+<input type="tel" name="motherContact" placeholder="Contact Number" required>
+
+<h3>Guardian Information</h3>
+<input type="text" name="guardianName" placeholder="Guardian Name" required>
+<input type="text" name="guardianOccupation" placeholder="Occupation" required>
+<input type="text" name="guardianAddress" placeholder="Address" required>
+<input type="tel" name="guardianContact" placeholder="Contact Number" required>
+
+<button type="button" onclick="back(2)">Back</button><br><br>
+<button type="button" onclick="next(2)">Next</button>
+</div>
+
+<!-- STEP 3 PAYMENT -->
+<div class="step">
+<div class="payment-box">
+<h3>GCash Payment</h3>
+<p>Please send enrollment payment via GCash.</p>
+ <!-- Instruction Message -->
+    <div style="background:#fff0f0;border:1px solid maroon;padding:15px;margin-bottom:15px;border-radius:5px;">
+      <strong>Important:</strong><br>
+      Please send the enrollment payment only to the <strong>official GCash number</strong> listed below.<br><br>
+      <strong>GCash Recipient:</strong> 09912614548 (Dominican School of Pilar)<br>
+      <strong>Amount:</strong> Enter the agreed enrollment fee<br><br>
+      After completing your payment, take a <strong>clear screenshot of your GCash receipt</strong> and upload it in the next step.<br><br>
+         </div>
+
+<label>GCash Recipient Number:</label>
+<input type="text" name="gcashRecipient" value="09912614548" readonly>
+
+<label>Amount Paid (₱):</label>
+<input type="text" name="amount" placeholder="Enter amount paid" required>
+
+<p>After payment, screenshot your receipt.</p>
+</div>
+
+<button type="button" onclick="back(3)">Back</button><br><br>
+<button type="button" onclick="next(3)">I Have Paid</button>
+</div>
+
+<!-- STEP 4 UPLOAD RECEIPT -->
+<div class="step">
+<label>Upload GCash Receipt Screenshot</label>
+<input type="file" name="receipt" accept="image/*" required>
+
+<button type="button" onclick="back(4)">Back</button><br><br>
+<button type="submit">Submit Enrollment</button>
+</div>
+
+</form>
+</div>
+
+<script>
+let steps=document.querySelectorAll(".step");
+let progress=document.querySelectorAll(".progress div");
+
+function next(n){
+  steps[n-1].classList.remove("active");
+  steps[n].classList.add("active");
+  updateProgress(n+1);
+}
+
+function back(n){
+  steps[n-1].classList.remove("active");
+  steps[n-2].classList.add("active");
+  updateProgress(n-1);
+}
+
+function updateProgress(step){
+  progress.forEach((p,i)=>{
+    if(i<step) p.classList.add("active");
+    else p.classList.remove("active");
+  });
+}
+</script>
 
 </body>
 </html>
-
 
 
 
