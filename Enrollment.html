@@ -5,190 +5,177 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enrollment - Dominican School of Pilar, Inc.</title>
 <style>
-body {font-family: Arial, sans-serif; background:#fdf8f6; color:maroon; margin:0; padding:20px;}
-header {background:maroon; color:white; padding:20px; text-align:center;}
-header h1 {margin:0; font-family:'Times New Roman', serif; font-size:28px;}
-.form-container {max-width:700px; margin:40px auto; background:white; padding:30px; border-radius:10px; border:2px solid maroon; box-shadow:0 0 15px rgba(0,0,0,0.1);}
-h2{text-align:center; margin-bottom:25px;}
-input, select {width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; font-size:16px; margin-bottom:15px;}
-button {background:maroon; color:white; padding:12px; width:100%; border:none; border-radius:5px; cursor:pointer; font-size:16px;}
-button:hover {background:#a00000;}
-.step {display:none;}
-.step.active {display:block;}
-.progress {display:flex; justify-content:space-between; margin-bottom:20px; font-weight:bold;}
-.progress div {flex:1; text-align:center; color:#bbb; position:relative;}
-.progress div.active {color:maroon;}
-.progress div::after {content:''; position:absolute; top:50%; right:-50%; height:3px; background:#bbb; width:100%; z-index:-1;}
-.progress div:last-child::after {display:none;}
-.progress div.active::after {background:maroon;}
-@media(max-width:600px){.progress div::after{width:80%; right:-40%;}}
+body {
+  font-family: Arial, sans-serif;
+  background: #fdf8f6;
+  color: maroon;
+  margin: 0;
+  padding: 20px;
+}
+header {
+  background: maroon;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+  font-family: 'Times New Roman', serif;
+  font-size: 28px;
+}
+.form-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid maroon;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+input, select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+button {
+  background: maroon;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+button:hover {
+  background: #a00000;
+}
+.name-fields {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.name-fields input {
+  flex: 1;
+}
+h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.payment-box {
+  background: #fff5f5;
+  border: 2px dashed maroon;
+  padding: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+}
 </style>
-<script>
-// Multi-step form logic
-document.addEventListener("DOMContentLoaded", function() {
-    let currentStep = 0;
-    const steps = document.querySelectorAll(".step");
-    const progress = document.querySelectorAll(".progress div");
-
-    function showStep(n){
-        steps.forEach((step, i)=>step.classList.toggle("active", i===n));
-        progress.forEach((p, i)=>p.classList.toggle("active", i<=n));
-    }
-
-    showStep(currentStep);
-
-    window.nextStep = function(){
-        if(currentStep < steps.length-1){
-            currentStep++;
-            showStep(currentStep);
-        }
-    }
-
-    window.prevStep = function(){
-        if(currentStep > 0){
-            currentStep--;
-            showStep(currentStep);
-        }
-    }
-
-    // Auto-calculate age
-    const dobInput = document.getElementById("dob");
-    const ageInput = document.getElementById("age");
-    if(dobInput && ageInput){
-        dobInput.addEventListener("change", function(){
-            if(!dobInput.value){ ageInput.value=""; return; }
-            const today = new Date();
-            const dob = new Date(dobInput.value);
-            let age = today.getFullYear() - dob.getFullYear();
-            if(today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) age--;
-            ageInput.value = age;
-        });
-    }
-
-    // Submit with confirmation
-    window.submitForm = function(){
-        const form = document.getElementById("enrollForm");
-        if(confirm("Are you sure all information is correct?")){
-            form.submit();
-        }
-    }
-});
-</script>
 </head>
 <body>
 
 <header>
-<h1>Dominican School of Pilar, Inc.</h1>
+  <h1>Dominican School of Pilar, Inc.</h1>
 </header>
 
 <div class="form-container">
-<h2>Online Enrollment</h2>
+<h2>Online Enrollment Form</h2>
 
-<div class="progress">
-<div class="active">Student Info</div>
-<div>Parent Info</div>
-<div>Payment</div>
-<div>Receipt</div>
-</div>
+<form action="https://formsubmit.co/ariennelosabio@dsp.ph.education" method="POST" enctype="multipart/form-data">
+  <!-- FormSubmit settings -->
+  <input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_subject" value="New Enrollment Submission">
+  <input type="text" name="_honey" style="display:none">
 
-<form id="enrollForm" action="https://formsubmit.co/ariennelosabio@dsp.ph.education" method="POST" enctype="multipart/form-data">
-<input type="hidden" name="_next" value="https://dsp-official-website.netlify.app/thankyou.html">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_subject" value="New Enrollment Submission">
-<input type="text" name="_honey" style="display:none">
+  <!-- STUDENT INFO -->
+  <h3>Student Information</h3>
+  <label>Full Name:</label>
+  <div class="name-fields">
+    <input type="text" name="lastName" placeholder="Last Name" required>
+    <input type="text" name="firstName" placeholder="First Name" required>
+    <input type="text" name="middleName" placeholder="Middle Name" required>
+    <input type="text" name="nameExtension" placeholder="Extension (Optional)">
+  </div>
 
-<!-- STEP 1: Student Info -->
-<div class="step active">
-<label>Full Name</label>
-<div style="display:flex; gap:10px; margin-bottom:15px;">
-<input type="text" name="lastName" placeholder="Last Name" required>
-<input type="text" name="firstName" placeholder="First Name" required>
-<input type="text" name="middleName" placeholder="Middle Name" required>
-<input type="text" name="nameExtension" placeholder="Ext (Optional)">
-</div>
-<label>LRN</label>
-<input type="text" name="lrn" required>
-<label>Grade Level</label>
-<select name="grade" required>
-<option value="">Select Grade</option>
-<option>Grade 7</option>
-<option>Grade 8</option>
-<option>Grade 9</option>
-<option>Grade 10</option>
-<option>Grade 11</option>
-<option>Grade 12 - STEM</option>
-<option>Grade 12 - HUMSS</option>
-<option>Grade 12 - ABM</option>
-<option>Grade 12 - GAS</option>
-<option>Grade 12 - TVL (CSS)</option>
-</select>
-<label>Date of Birth</label>
-<input type="date" id="dob" name="dob" required>
-<label>Age</label>
-<input type="text" id="age" name="age" readonly placeholder="Auto-calculated">
-<label>Gender</label>
-<select name="gender" required>
-<option value="">Select Gender</option>
-<option>Female</option>
-<option>Male</option>
-</select>
-<label>Home Address</label>
-<input type="text" name="address" required>
-<button type="button" onclick="nextStep()">Next</button>
-</div>
+  <label>LRN:</label>
+  <input type="text" name="lrn" required>
 
-<!-- STEP 2: Parent Info -->
-<div class="step">
-<h3>Father Information</h3>
-<input type="text" name="fatherName" placeholder="Name" required>
-<input type="text" name="fatherOccupation" placeholder="Occupation" required>
-<input type="text" name="fatherAddress" placeholder="Address" required>
-<input type="tel" name="fatherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+  <label>Grade Level:</label>
+  <select name="grade" required>
+    <option value="">Select Grade</option>
+    <option>Grade 7</option>
+    <option>Grade 8</option>
+    <option>Grade 9</option>
+    <option>Grade 10</option>
+    <option>Grade 11</option>
+    <option>Grade 12 - STEM</option>
+    <option>Grade 12 - HUMSS</option>
+    <option>Grade 12 - ABM</option>
+    <option>Grade 12 - GAS</option>
+    <option>Grade 12 - TVL (CSS)</option>
+  </select>
 
-<h3>Mother Information</h3>
-<input type="text" name="motherName" placeholder="Name" required>
-<input type="text" name="motherOccupation" placeholder="Occupation" required>
-<input type="text" name="motherAddress" placeholder="Address" required>
-<input type="tel" name="motherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+  <label>Date of Birth:</label>
+  <input type="date" name="dob" required>
 
-<h3>Guardian Information</h3>
-<input type="text" name="guardianName" placeholder="Name" required>
-<input type="text" name="guardianOccupation" placeholder="Occupation" required>
-<input type="text" name="guardianAddress" placeholder="Address" required>
-<input type="tel" name="guardianContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+  <label>Gender:</label>
+  <select name="gender" required>
+    <option value="">Select Gender</option>
+    <option>Female</option>
+    <option>Male</option>
+  </select>
 
-<button type="button" onclick="prevStep()">Back</button><br><br>
-<button type="button" onclick="nextStep()">Next</button>
-</div>
+  <label>Home Address:</label>
+  <input type="text" name="address" required>
 
-<!-- STEP 3: Payment -->
-<div class="step">
-<div style="background:#fff5f5; border:2px dashed maroon; padding:20px; text-align:center; margin-bottom:20px;">
-<h3>GCash Payment</h3>
-<p>Send enrollment payment via GCash to <strong>09912614548</strong> and take a screenshot.</p>
-</div>
-<label>Amount Paid (₱)</label>
-<input type="text" name="amount" placeholder="Enter amount paid" required>
-<button type="button" onclick="prevStep()">Back</button><br><br>
-<button type="button" onclick="nextStep()">I Have Paid</button>
-</div>
+  <!-- PARENT/GUARDIAN INFO -->
+  <h3>Father Information</h3>
+  <input type="text" name="fatherName" placeholder="Name" required>
+  <input type="text" name="fatherOccupation" placeholder="Occupation" required>
+  <input type="text" name="fatherAddress" placeholder="Address" required>
+  <input type="tel" name="fatherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
 
-<!-- STEP 4: Upload Receipt -->
-<div class="step">
-<label>Upload GCash Receipt Screenshot</label>
-<input type="file" name="receipt" accept="image/*" required>
-<button type="button" onclick="prevStep()">Back</button><br><br>
-<button type="button" onclick="submitForm()">Submit Enrollment</button>
-</div>
+  <h3>Mother Information</h3>
+  <input type="text" name="motherName" placeholder="Name" required>
+  <input type="text" name="motherOccupation" placeholder="Occupation" required>
+  <input type="text" name="motherAddress" placeholder="Address" required>
+  <input type="tel" name="motherContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
 
+  <h3>Guardian Information</h3>
+  <input type="text" name="guardianName" placeholder="Name" required>
+  <input type="text" name="guardianOccupation" placeholder="Occupation" required>
+  <input type="text" name="guardianAddress" placeholder="Address" required>
+  <input type="tel" name="guardianContact" placeholder="Contact Number" pattern="[0-9]{11}" required>
+
+  <!-- PAYMENT -->
+  <h3>Payment Information</h3>
+  <div class="payment-box">
+    <p>Send enrollment payment via GCash to <strong>09912614548</strong> and upload the screenshot below.</p>
+  </div>
+  <label>Amount Paid (₱):</label>
+  <input type="text" name="amount" placeholder="Enter amount paid" required>
+
+  <label>Upload GCash Receipt Screenshot:</label>
+  <input type="file" name="receipt" accept="image/*" required>
+
+  <button type="submit">Submit Enrollment</button>
 </form>
 </div>
 
-<footer>&copy; 2025 Dominican School of Pilar, Inc. All rights reserved.</footer>
+<footer style="text-align:center; margin-top:40px; font-size:14px; color:#666;">
+&copy; 2025 Dominican School of Pilar, Inc. All rights reserved.
+</footer>
+
 </body>
 </html>
-
 
 
 
