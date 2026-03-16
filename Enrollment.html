@@ -3,101 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Enrollment - Dominican School of Pilar, Inc.</title>
+<title>Enrollment - Step 1 | Dominican School of Pilar, Inc.</title>
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #fdf8f6;
-  color: maroon;
-  margin: 0;
-  padding: 20px;
-}
-header {
-  background: maroon;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-header h1 {
-  margin: 0;
-  font-family: 'Times New Roman', serif;
-  font-size: 28px;
-}
-.form-container {
-  max-width: 700px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  border: 2px solid maroon;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-h2 {
-  text-align: center;
-  margin-bottom: 25px;
-}
-input, select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-button {
-  background: maroon;
-  color: white;
-  padding: 12px;
-  width: 100%;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-button:hover {
-  background: #a00000;
-}
-.name-fields {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-.name-fields input {
-  flex: 1;
-}
-h3 {
-  margin-top: 25px;
-  margin-bottom: 10px;
-}
+body {font-family: Arial; background:#fdf8f6; color:maroon; margin:0; padding:20px;}
+header {background:maroon; color:white; padding:20px; text-align:center;}
+header h1 {margin:0; font-family:'Times New Roman', serif; font-size:28px;}
+.form-container {max-width:700px; margin:40px auto; background:white; padding:30px; border-radius:10px; border:2px solid maroon; box-shadow:0 0 15px rgba(0,0,0,0.1);}
+h2 {text-align:center; margin-bottom:25px;}
+input, select {width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; font-size:16px; margin-bottom:15px;}
+button {background:maroon; color:white; padding:12px; width:100%; border:none; border-radius:5px; cursor:pointer; font-size:16px;}
+button:hover {background:#a00000;}
+.name-fields {display:flex; gap:10px; margin-bottom:15px;}
+.name-fields input {flex:1;}
+@media(max-width:600px){.name-fields{flex-direction:column;}}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Dominican School of Pilar, Inc.</h1>
+<h1>Dominican School of Pilar, Inc.</h1>
 </header>
 
 <div class="form-container">
-<h2>Online Enrollment Form</h2>
+<h2>Step 1: Student Information</h2>
 
-<!-- Replace YOUR_GOOGLE_FORM_ACTION with your Google Form action URL -->
-<form action="YOUR_GOOGLE_FORM_ACTION" method="POST" target="_blank">
-  
-  <!-- STUDENT INFO -->
-  <h3>Student Information</h3>
-  <label>Full Name:</label>
+<form action="enrollment_step2.html" method="GET">
   <div class="name-fields">
-    <input type="text" name="entry.STUDENT_LASTNAME" placeholder="Last Name" required>
-    <input type="text" name="entry.STUDENT_FIRSTNAME" placeholder="First Name" required>
-    <input type="text" name="entry.STUDENT_MIDDLENAME" placeholder="Middle Name" required>
-    <input type="text" name="entry.STUDENT_EXTENSION" placeholder="Extension (Optional)">
+    <input type="text" name="lastName" placeholder="Last Name" required>
+    <input type="text" name="firstName" placeholder="First Name" required>
+    <input type="text" name="middleName" placeholder="Middle Name" required>
+    <input type="text" name="nameExtension" placeholder="Extension (Optional)">
   </div>
 
-  <label>LRN:</label>
-  <input type="text" name="entry.STUDENT_LRN" required>
+  <input type="text" name="lrn" placeholder="LRN" required>
 
-  <label>Grade Level:</label>
-  <select name="entry.STUDENT_GRADE" required>
+  <select name="grade" required>
     <option value="">Select Grade</option>
     <option>Grade 7</option>
     <option>Grade 8</option>
@@ -111,55 +51,19 @@ h3 {
     <option>Grade 12 - TVL (CSS)</option>
   </select>
 
-  <label>Date of Birth:</label>
-  <input type="date" name="entry.STUDENT_DOB" required>
+  <input type="date" name="dob" required>
 
-  <label>Gender:</label>
-  <select name="entry.STUDENT_GENDER" required>
+  <select name="gender" required>
     <option value="">Select Gender</option>
     <option>Female</option>
     <option>Male</option>
   </select>
 
-  <label>Home Address:</label>
-  <input type="text" name="entry.STUDENT_ADDRESS" required>
+  <input type="text" name="address" placeholder="Home Address" required>
 
-  <!-- PARENT/GUARDIAN INFO -->
-  <h3>Father Information</h3>
-  <input type="text" name="entry.FATHER_NAME" placeholder="Name" required>
-  <input type="text" name="entry.FATHER_OCCUPATION" placeholder="Occupation" required>
-  <input type="text" name="entry.FATHER_ADDRESS" placeholder="Address" required>
-  <input type="tel" name="entry.FATHER_CONTACT" placeholder="Contact Number" pattern="[0-9]{11}" required>
-
-  <h3>Mother Information</h3>
-  <input type="text" name="entry.MOTHER_NAME" placeholder="Name" required>
-  <input type="text" name="entry.MOTHER_OCCUPATION" placeholder="Occupation" required>
-  <input type="text" name="entry.MOTHER_ADDRESS" placeholder="Address" required>
-  <input type="tel" name="entry.MOTHER_CONTACT" placeholder="Contact Number" pattern="[0-9]{11}" required>
-
-  <h3>Guardian Information</h3>
-  <input type="text" name="entry.GUARDIAN_NAME" placeholder="Name" required>
-  <input type="text" name="entry.GUARDIAN_OCCUPATION" placeholder="Occupation" required>
-  <input type="text" name="entry.GUARDIAN_ADDRESS" placeholder="Address" required>
-  <input type="tel" name="entry.GUARDIAN_CONTACT" placeholder="Contact Number" pattern="[0-9]{11}" required>
-
-  <!-- PAYMENT INFO -->
-  <h3>Payment Information</h3>
-  <p>Please send your GCash payment to <strong>09912614548</strong> and note your transaction. You may write the transaction details below.</p>
-  <label>Amount Paid (₱):</label>
-  <input type="text" name="entry.PAYMENT_AMOUNT" placeholder="Enter amount paid" required>
-
-  <label>GCash Transaction Reference:</label>
-  <input type="text" name="entry.PAYMENT_REF" placeholder="Enter GCash reference/receipt number" required>
-
-  <button type="submit">Submit Enrollment</button>
+  <button type="submit">Next: Parent & Payment Info</button>
 </form>
 </div>
-
-<footer style="text-align:center; margin-top:40px; font-size:14px; color:#666;">
-&copy; 2025 Dominican School of Pilar, Inc. All rights reserved.
-</footer>
-
 </body>
 </html>
 
